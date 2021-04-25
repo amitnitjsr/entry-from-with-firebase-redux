@@ -53,22 +53,22 @@ const TableComponent = (props) => {
                                         {entryObject[id].end_of_services}
                                     </TableCell>
                                     <TableCell align="left">
-                                        {entryObject[id].procedure_code},
+                                        {entryObject[id].procedure_code}
                                     </TableCell>
                                     <TableCell align="left">
                                         {entryObject[id].quantity}
                                     </TableCell>
                                     <TableCell align="left">
-                                        {entryObject[id].dp1},
-                                        {entryObject[id].dp2}
-                                        {entryObject[id].dp3}
-                                        {entryObject[id].dp4}
+                                        {entryObject[id].dp1 !== '' ? entryObject[id].dp1 : ''}
+                                        {entryObject[id].dp2 !== '' ? ',' + entryObject[id].dp2 : ''}
+                                        {entryObject[id].dp3 !== '' ? ',' + entryObject[id].dp3 : ''}
+                                        {entryObject[id].dp4 !== '' ? ',' + entryObject[id].dp4 : ''}
                                     </TableCell>
                                     <TableCell align="left">
-                                        {entryObject[id].md1},
-                                        {entryObject[id].md2}
-                                        {entryObject[id].md3}
-                                        {entryObject[id].md4}
+                                        {entryObject[id].md1 !== '' ? entryObject[id].md1 : ''}
+                                        {entryObject[id].md2 !== '' ? ',' + entryObject[id].md2 : ''}
+                                        {entryObject[id].md3 !== '' ? ',' + entryObject[id].md3 : ''}
+                                        {entryObject[id].md4 !== '' ? ',' + entryObject[id].dp4 : ''}
                                     </TableCell>
                                     <TableCell align="left">
                                         {entryObject[id].bill_amount}
@@ -90,11 +90,10 @@ const TableComponent = (props) => {
                                 </TableRow>
                             ))}
 
-                            <TableRow>
+                            <TableRow >
                                 <TableCell colSpan={6}>Total</TableCell>
-                                <TableCell align="center">
+                                <TableCell align="left">
                                     {total()}
-
                                 </TableCell>
                             </TableRow>
                         </TableBody>

@@ -19,14 +19,18 @@ class EntryComponent extends Component {
     componentDidMount() {
         fireBaseDB.child('entry').on('value', snapshot => {
             if (snapshot.val() != null) {
-                this.setState({ list: snapshot.val() }, () => {
-                    this.props.updateRedux(this.state.list);
-                });
+                this.props.updateRedux(snapshot.val());
             }
             else {
                 this.setState({ list: {} });
             }
         })
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps !== this.props) {
+            this.setState({ list: this.props.entry.list });
+        }
     }
 
     addOrEdit = (obj) => {
@@ -97,7 +101,7 @@ class EntryComponent extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        list: state.entry.list,
+        entry: state.entry,
     }
 }
 
@@ -108,5 +112,3 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EntryComponent);
-
-// export default EntryComponent;

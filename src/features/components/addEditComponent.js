@@ -60,7 +60,9 @@ const AddEdit = (props) => {
         else {
             setValues(initialFieldsValue);
         }
-    }, [props.id]);
+    },
+        // eslint-disable-next-line
+        [props.id]);
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
