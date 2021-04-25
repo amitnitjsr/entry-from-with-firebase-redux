@@ -4,18 +4,14 @@ import {
     Switch,
     Route,
 } from "react-router-dom";
-
 import App from './Container/home/App';
-import Customer from './Container/Customer/Table';
-import AddCustomer from './Container/Customer/Add';
+import EntryForm from './features/container/EntryComponent';
 import PageNotFound from './Container/PageNotFound';
-// import PreLoading from './Component/PreLoading';
 
 
 const routes = (props) => {
     return (
         <Router>
-            {/* <PreLoading /> */}
             <Switch>
                 <Route
                     exact
@@ -23,16 +19,8 @@ const routes = (props) => {
                     component={App} />
                 <Route
                     exact
-                    path="/customer"
-                    component={Customer} />
-                <Route
-                    exact
-                    path="/customer/new"
-                    component={AddCustomer} />
-                <Route
-                    exact
-                    path="/customer/edit/:id"
-                    component={AddCustomer} />
+                    path="/entryform"
+                    component={EntryForm} />
                 <Route
                     path=""
                     component={PageNotFound} />

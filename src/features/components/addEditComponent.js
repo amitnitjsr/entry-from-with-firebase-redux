@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as action from '../Action';
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import InputAdornment from '@material-ui/core/InputAdornment';
-import { Row, Col, Button } from 'reactstrap';
-import Navbar from '../../../Component/Navbar/Navbar';
-// import ContactsForm from './ContactsForm';
-import fireBaseDB from '../../../firebase';
+import { Row, Col } from 'reactstrap';
+import Navbar from '../../Component/Navbar/Navbar';
 import './AddEdit.css';
 
 const useStyles = makeStyles(theme => ({
@@ -58,79 +52,19 @@ const AddEdit = (props) => {
         provider_phone: ''
     }
     const [values, setValues] = useState(initialFieldsValue);
-    const [currentID, setCurrentID] = useState('');
-
-
-    const addOrEdit = (obj) => {
-        if (currentID == '') {
-            fireBaseDB.child('entry').push(
-                obj,
-                err => {
-                    if (err) {
-                        console.log(err)
-                    }
-                }
-            )
-        }
-        else {
-            fireBaseDB.child(`entry/${currentID}`).set(
-                obj,
-                err => {
-                    if (err) {
-                        console.log(err)
-                    }
-                    else {
-                        setCurrentID('');
-                    }
-                }
-            )
-        }
-        props.history.push('/customer');
-    }
-
-    const onDelete = (id) => {
-        if (window.confirm('Are you sure wants to delete records')) {
-            fireBaseDB.child(`contacts/${id}`).remove(
-                err => {
-                    if (err) {
-                        console.log(err)
-                    }
-                }
-            )
-        }
-    }
 
     useEffect(() => {
-        // const { id } = props.match.params;
         const { id } = props;
-        const { list } = props;
-        console.log(id, list)
         if (id) {
-            setCurrentID(id);
-            const finalList = list.filter(d => d.id === parseInt(id));
-            setValues({ ...props.listObject[id] });
-        }
-        else {
-            setCurrentID('');
+            setValues({ ...props.list[id] });
         }
     }, [props.id, props]);
-    // console.log('values', values)
-    const saveHandler = () => {
-        if (props.match.params.id) {
-            // props.editCustomer({ "id": parseInt(props.match.params.id), "name": name, "customer_id": custId, "phone": phone, "gender": gender, "email": email });
-            props.history.push('/customer');
-        }
-        else {
-            // props.addNewCustomer({ "name": name, "customer_id": custId, "phone": phone, "gender": gender, "email": email });
-            props.history.push('/customer');
-        }
-    }
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        console.log('values', values)
-        addOrEdit(values);
-        // props.addOrEdit(values);
+        props.addOrEdit(values);
+        setValues(initialFieldsValue);
+
     }
 
     const handleChangeInput = (e) => {
@@ -140,6 +74,7 @@ const AddEdit = (props) => {
             [name]: value
         });
     }
+
     return (
         <div>
             <Navbar />
@@ -419,7 +354,7 @@ const AddEdit = (props) => {
                             <div className="col-auto mr-auto"></div>
                             <div className="float-right add-pos">
                                 <button className="add">
-                                    Add
+                                    {props.id !== '' ? 'Update' : 'Add'}
                                 </button>
                             </div>
                         </Row>
@@ -430,16 +365,4 @@ const AddEdit = (props) => {
     );
 };
 
-const mapStateToProps = (state) => {
-    return {
-        list: state.customer.customerDetails,
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({
-        ...action
-    }, dispatch)
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(AddEdit);
+export default AddEdit;
