@@ -52,6 +52,10 @@ class EntryComponent extends Component {
                     }
                 }
             )
+            let tmp = obj;
+            tmp.id = "";
+            tmp.id = this.state.currentID;
+            this.props.editEntry(tmp);
         }
     }
 
@@ -70,6 +74,7 @@ class EntryComponent extends Component {
                 }
             )
         }
+        this.props.deleteEntry({ id: id });
     }
 
     render() {

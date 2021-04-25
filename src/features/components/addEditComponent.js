@@ -29,13 +29,12 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const AddEdit = (props) => {
-
     const classes = useStyles();
     const initialFieldsValue = {
         start_of_services: '',
         end_of_services: '',
         procedure_code: '',
-        quantity: 0,
+        quantity: '',
         place_of_services: '',
         dp1: '',
         dp2: '',
@@ -46,8 +45,8 @@ const AddEdit = (props) => {
         md3: '',
         md4: '',
         ndc_code: '',
-        ndc_quantity: 0,
-        bill_amount: 0,
+        ndc_quantity: '',
+        bill_amount: '',
         provider_email_address: '',
         provider_phone: ''
     }
@@ -58,13 +57,15 @@ const AddEdit = (props) => {
         if (id) {
             setValues({ ...props.list[id] });
         }
-    }, [props.id, props]);
+        else {
+            setValues(initialFieldsValue);
+        }
+    }, [props.id]);
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
         props.addOrEdit(values);
         setValues(initialFieldsValue);
-
     }
 
     const handleChangeInput = (e) => {
@@ -139,6 +140,7 @@ const AddEdit = (props) => {
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
+                                    inputProps={{ min: 0 }}
                                     required
                                 />
                             </Col>
@@ -300,6 +302,7 @@ const AddEdit = (props) => {
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
+                                    inputProps={{ min: 0 }}
                                 />
                             </Col>
                             <Col>
@@ -314,6 +317,7 @@ const AddEdit = (props) => {
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
+                                    inputProps={{ min: 0 }}
                                 />
                             </Col>
                         </Row>

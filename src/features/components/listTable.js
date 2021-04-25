@@ -19,11 +19,11 @@ const TableComponent = (props) => {
     }, [props.list]);
 
     const total = () => {
-        let to = 0;
+        let totalAmt = 0;
         Object.keys(entryObject).map((id) => (
-            to = to + (+entryObject[id].bill_amount)
+            totalAmt = totalAmt + (+entryObject[id].bill_amount)
         ))
-        return to;
+        return totalAmt;
     }
 
     return (
