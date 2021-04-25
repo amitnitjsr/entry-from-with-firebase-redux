@@ -10,10 +10,10 @@ export const updateRedux = (data) => {
 export const addNewEntry = (data) => {
     const { name, email, phone, customer_id, gender } = data;
     return (dispatch, getState) => {
-        const { customerDetails } = getState().customer;
-        const lastData = customerDetails[customerDetails.length - 1];
+        const { list } = getState().entry;
+        const lastData = list[list.length - 1];
         const newData = [
-            ...customerDetails,
+            ...list,
             {
                 'id': lastData.id + 1,
                 'name': name || '',
