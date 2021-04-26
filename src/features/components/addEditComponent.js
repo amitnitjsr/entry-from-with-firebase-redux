@@ -85,7 +85,7 @@ const AddEdit = (props) => {
                 <div className={classes.paper}>
                     <form className={classes.form} onSubmit={handleFormSubmit}>
                         <Row>
-                            <Col>
+                            <Col className="col-md-auto">
                                 <TextField
                                     name="start_of_services"
                                     value={values.start_of_services}
@@ -97,10 +97,11 @@ const AddEdit = (props) => {
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
+                                    style={{ width: '100%' }}
                                     required
                                 />
                             </Col>
-                            <Col>
+                            <Col className="col-md-auto">
                                 <TextField
                                     name="end_of_services"
                                     value={values.end_of_services}
@@ -115,7 +116,7 @@ const AddEdit = (props) => {
                                     required
                                 />
                             </Col>
-                            <Col>
+                            <Col className="col-md-auto">
                                 <TextField
                                     name="procedure_code"
                                     value={values.procedure_code}
@@ -130,7 +131,7 @@ const AddEdit = (props) => {
                                     required
                                 />
                             </Col>
-                            <Col>
+                            <Col className="col-md-auto">
                                 <TextField
                                     name="quantity"
                                     value={values.quantity}
@@ -149,7 +150,7 @@ const AddEdit = (props) => {
                         </Row>
                         <br />
                         <Row>
-                            <Col>
+                            <Col className="col-md-auto">
                                 <TextField
                                     name="place_of_services"
                                     value={values.place_of_services}
@@ -164,7 +165,7 @@ const AddEdit = (props) => {
                                     required
                                 />
                             </Col>
-                            <Col style={{ display: 'flex' }}>
+                            <Col style={{ display: 'flex' }} >
                                 <label>Diagnosis Pointers</label>
                                 <TextField
                                     name="dp1"
@@ -220,7 +221,7 @@ const AddEdit = (props) => {
                                     style={{ width: '15%' }}
                                 />
                             </Col>
-                            <Col>
+                            <Col >
                                 <label>Modifiers</label>&nbsp;
                                 <TextField
                                     name="md1"
@@ -278,7 +279,7 @@ const AddEdit = (props) => {
                         </Row>
                         <br />
                         <Row>
-                            <Col>
+                            <Col className="col-md-auto">
                                 <TextField
                                     name="ndc_code"
                                     value={values.ndc_code}
@@ -292,7 +293,7 @@ const AddEdit = (props) => {
                                     }}
                                 />
                             </Col>
-                            <Col>
+                            <Col className="col-md-auto">
                                 <TextField
                                     name="ndc_quantity"
                                     value={values.ndc_quantity}
@@ -307,7 +308,7 @@ const AddEdit = (props) => {
                                     inputProps={{ min: 0 }}
                                 />
                             </Col>
-                            <Col>
+                            <Col className="col-md-auto">
                                 <TextField
                                     name="bill_amount"
                                     value={values.bill_amount}
@@ -325,7 +326,7 @@ const AddEdit = (props) => {
                         </Row>
                         <br />
                         <Row>
-                            <Col>
+                            <Col className="col-md-auto">
                                 <TextField
                                     name="provider_email_address"
                                     value={values.provider_email_address}
@@ -340,7 +341,7 @@ const AddEdit = (props) => {
                                     required
                                 />
                             </Col>
-                            <Col>
+                            <Col className="col-md-auto">
                                 <TextField
                                     name="provider_phone"
                                     value={values.provider_phone}
