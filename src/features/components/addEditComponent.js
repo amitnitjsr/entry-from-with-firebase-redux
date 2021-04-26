@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { Row, Col } from 'reactstrap';
 import Navbar from '../../Component/Navbar/Navbar';
-import './AddEdit.css';
+import './AddEdit.scss';
 
 const useStyles = makeStyles(theme => ({
     paper: {
